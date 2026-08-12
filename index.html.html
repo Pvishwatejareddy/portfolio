@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P. Vishwa Teja — AI &amp; Machine Learning Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#141416;
+    --ink-soft:#4a4a4f;
+    --ink-faint:#8a8a90;
+    --paper:#f6f5f2;
+    --paper-raised:#ffffff;
+    --line:#dcdad4;
+    --line-strong:#141416;
+    --chip-bg:#eeece7;
+    --band:#141416;
+    --band-text:#f6f5f2;
+    --accent:#5b5a54;
+    --radius:2px;
+    --serif:'Fraunces', Georgia, serif;
+    --sans:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --mono:'JetBrains Mono', ui-monospace, monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 32px;}
+  @media (max-width:640px){ .wrap{padding:0 20px;} }
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,245,242,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    height:64px;
+  }
+  .brand{
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:0.06em;
+    color:var(--ink);
+    text-decoration:none;
+  }
+  .navlinks{display:flex;gap:28px;list-style:none;margin:0;padding:0;}
+  .navlinks a{
+    text-decoration:none;
+    font-size:13px;
+    letter-spacing:0.02em;
+    color:var(--ink-soft);
+    font-weight:500;
+    position:relative;
+    padding-bottom:2px;
+  }
+  .navlinks a:hover{color:var(--ink);}
+  @media (max-width:640px){
+    .navlinks{gap:16px;}
+    .navlinks a{font-size:12px;}
+  }
+
+  /* HERO */
+  header.hero{
+    background:var(--band);
+    color:var(--band-text);
+    padding:96px 0 88px;
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::before{
+    content:"";
+    position:absolute;
+    top:0; right:0;
+    width:1px; height:100%;
+    background:rgba(246,245,242,0.08);
+  }
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:#a9a8a2;
+    margin:0 0 22px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:28px;height:1px;
+    background:#a9a8a2;
+    display:inline-block;
+  }
+  h1.name{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(32px, 6.4vw, 62px);
+    line-height:1.05;
+    margin:0 0 18px;
+    letter-spacing:-0.01em;
+    white-space:nowrap;
+  }
+  @media (max-width:520px){
+    h1.name{white-space:normal;}
+  }
+  .email-line{
+    font-family:var(--mono);
+    font-size:14px;
+    margin:0 0 22px;
+  }
+  .email-line a{
+    color:#b9b8b2;
+    text-decoration:none;
+    border-bottom:1px solid #4a4a45;
+    padding-bottom:2px;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  .email-line a:hover{
+    color:#f0efec;
+    border-color:#f0efec;
+  }
+  .role-line{
+    font-size:16px;
+    color:#c9c8c2;
+    margin:0 0 28px;
+    font-weight:500;
+  }
+  .role-line .dot{color:#6f6e68;margin:0 10px;}
+  .bio{
+    max-width:560px;
+    font-size:15.5px;
+    line-height:1.7;
+    color:#c9c8c2;
+    margin:0 0 40px;
+  }
+  .bio b{color:#f0efec;font-weight:600;}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{
+    font-family:var(--sans);
+    font-size:13.5px;
+    font-weight:600;
+    letter-spacing:0.01em;
+    padding:12px 22px;
+    border-radius:var(--radius);
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:all .15s ease;
+    border:1px solid transparent;
+  }
+  .btn-solid{
+    background:var(--paper);
+    color:var(--ink);
+  }
+  .btn-solid:hover{background:#fff;}
+  .btn-outline{
+    border:1px solid #55544e;
+    color:#e7e6e2;
+  }
+  .btn-outline:hover{border-color:#e7e6e2;background:rgba(255,255,255,0.04);}
+
+  /* SECTIONS */
+  section{padding:76px 0;border-bottom:1px solid var(--line);scroll-margin-top:80px;}
+  section:last-of-type{border-bottom:none;}
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    margin-bottom:44px;
+  }
+  .section-num{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--ink-faint);
+    letter-spacing:0.08em;
+  }
+  h2.section-title{
+    font-family:var(--serif);
+    font-size:32px;
+    font-weight:600;
+    margin:6px 0 0;
+    letter-spacing:-0.01em;
+  }
+
+  /* PROJECTS */
+  .project{
+    padding:36px 0;
+    border-top:1px solid var(--line);
+  }
+  .project:first-of-type{border-top:1px solid var(--line-strong);}
+  .project-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  .project-title{
+    font-family:var(--serif);
+    font-size:23px;
+    font-weight:600;
+    margin:0;
+  }
+  .project-sub{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin:6px 0 18px;
+  }
+  .visit{
+    font-family:var(--mono);
+    font-size:12px;
+    text-decoration:none;
+    color:var(--ink);
+    border-bottom:1px solid var(--ink);
+    padding-bottom:1px;
+    white-space:nowrap;
+  }
+  .visit:hover{color:var(--ink-soft);border-color:var(--ink-soft);}
+  ul.bullets{list-style:none;margin:0 0 20px;padding:0;}
+  ul.bullets li{
+    position:relative;
+    padding-left:20px;
+    margin-bottom:11px;
+    font-size:14.5px;
+    line-height:1.65;
+    color:var(--ink-soft);
+  }
+  ul.bullets li::before{
+    content:"—";
+    position:absolute;
+    left:0;
+    color:var(--ink-faint);
+  }
+  .tags{display:flex;flex-wrap:wrap;gap:8px;}
+  .tag{
+    font-family:var(--mono);
+    font-size:11.5px;
+    padding:5px 10px;
+    background:var(--chip-bg);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    color:var(--ink-soft);
+  }
+
+  /* SKILLS */
+  .skill-group{margin-bottom:32px;}
+  .skill-group:last-child{margin-bottom:0;}
+  .skill-group h3{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin:0 0 14px;
+    font-weight:500;
+  }
+  .skill-chips{display:flex;flex-wrap:wrap;gap:9px;}
+  .chip{
+    font-size:13.5px;
+    padding:8px 14px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:var(--paper-raised);
+    color:var(--ink);
+  }
+
+  /* EXPERIENCE */
+  .exp-item{
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:24px;
+    padding:26px 0;
+    border-top:1px solid var(--line);
+  }
+  .exp-item:first-child{border-top:1px solid var(--line-strong);}
+  .exp-date{
+    font-family:var(--mono);
+    font-size:12.5px;
+    color:var(--ink-faint);
+    padding-top:3px;
+  }
+  .exp-role{
+    font-family:var(--serif);
+    font-size:19px;
+    font-weight:600;
+    margin:0 0 3px;
+  }
+  .exp-org{
+    font-size:13.5px;
+    color:var(--ink-faint);
+    margin:0 0 12px;
+  }
+  .exp-desc{
+    font-size:14.5px;
+    line-height:1.65;
+    color:var(--ink-soft);
+    margin:0;
+    max-width:60ch;
+  }
+  @media (max-width:640px){
+    .exp-item{grid-template-columns:1fr;gap:6px;}
+  }
+
+  /* CERTS + LANGUAGES */
+  .two-col{display:grid;grid-template-columns:1.4fr 1fr;gap:60px;}
+  @media (max-width:640px){.two-col{grid-template-columns:1fr;gap:40px;}}
+  .cert-list{list-style:none;margin:0;padding:0;}
+  .cert-list li{
+    display:flex;
+    justify-content:space-between;
+    padding:13px 0;
+    border-top:1px solid var(--line);
+    font-size:14px;
+  }
+  .cert-list li:last-child{border-bottom:1px solid var(--line);}
+  .cert-name{color:var(--ink);}
+  .cert-org{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--ink-faint);
+  }
+  .lang-row{display:flex;flex-wrap:wrap;gap:10px;}
+  .lang-chip{
+    font-size:13.5px;
+    padding:7px 13px;
+    background:var(--chip-bg);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+  }
+  .lang-chip.beginner{color:var(--ink-faint);}
+
+  /* CONTACT */
+  section.contact{
+    background:var(--band);
+    color:var(--band-text);
+    border-bottom:none;
+  }
+  .contact h2.section-title{color:var(--band-text);}
+  .contact .section-num{color:#8a8983;}
+  .contact-copy{
+    font-size:16px;
+    line-height:1.7;
+    color:#c9c8c2;
+    max-width:520px;
+    margin:0 0 40px;
+  }
+  .contact-email{
+    font-family:var(--mono);
+    color:#f0efec;
+  }
+  .contact-links{display:flex;flex-direction:column;gap:0;max-width:480px;}
+  .contact-link{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 0;
+    border-top:1px solid #34332e;
+    text-decoration:none;
+    color:#f0efec;
+    font-size:15px;
+    transition:opacity .15s ease;
+  }
+  .contact-links a:last-child{border-bottom:1px solid #34332e;}
+  .contact-link:hover{opacity:0.6;}
+  .contact-link .arrow{
+    font-family:var(--mono);
+    font-size:13px;
+    color:#8a8983;
+  }
+
+  footer{
+    background:var(--band);
+    color:#77766f;
+    padding:24px 0 40px;
+    font-size:12.5px;
+    font-family:var(--mono);
+    display:flex;
+    justify-content:space-between;
+  }
+  @media (max-width:640px){
+    footer .wrap{flex-direction:column;gap:6px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap" style="justify-content:flex-end;">
+    <ul class="navlinks">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">Hyderabad, India</p>
+    <h1 class="name">P. Vishwa Teja</h1>
+    <p class="email-line"><a href="mailto:pvishwateja2005@gmail.com">pvishwateja2005@gmail.com</a></p>
+    <p class="role-line">AI &amp; Machine Learning Engineer</p>
+    <p class="bio">
+      B.Tech in <b>Artificial Intelligence &amp; Machine Learning</b> (2027) with strong foundations in DSA, OOP, DBMS, operating systems and networks. I build NLP pipelines and scalable full-stack systems with Python, FastAPI, React and PostgreSQL.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-solid" href="https://github.com/Pvishwatejareddy" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn btn-outline" href="https://www.linkedin.com/in/p-vishwa-teja-36b65826a" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</header>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="section-num">02 — Selected work</span>
+        <h2 class="section-title">Projects</h2>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3 class="project-title">EcoLens</h3>
+        <a class="visit" href="https://pvishwatejareddy.github.io/ecolens" target="_blank" rel="noopener">Visit site ↗</a>
+      </div>
+      <p class="project-sub">AI-Powered Carbon Footprint Tracker</p>
+      <ul class="bullets">
+        <li>Built end to end: data collection, cleaning and processing logic in Python and JavaScript to compute personalised carbon scores.</li>
+        <li>Integrated the Gemini AI API into a recommendation engine generating actionable suggestions, plus interactive dashboards with badge/streak gamification.</li>
+        <li>Debugged production badge-logic and UI/date-handling issues; shipped and maintained a responsive live app for Hack2Skill Challenge 3.</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">Gemini AI</span><span class="tag">Firebase</span><span class="tag">HTML5/CSS3</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3 class="project-title">NYUNA</h3>
+        <a class="visit" href="https://nyuna-url-shortener.vercel.app" target="_blank" rel="noopener">Visit site ↗</a>
+      </div>
+      <p class="project-sub">Production-Grade URL Shortener &amp; Analytics Platform</p>
+      <ul class="bullets">
+        <li>Architected backend and frontend around Base62 encoding and a Redis cache-aside pipeline for fast redirects, achieving a 95% cache hit rate in production.</li>
+        <li>Designed REST APIs in FastAPI over a PostgreSQL data layer; implemented Token Bucket rate limiting with Redis atomic operations.</li>
+        <li>Built a real-time click analytics dashboard in React and deployed backend (Render) and frontend (Vercel) independently.</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">FastAPI</span><span class="tag">Redis</span><span class="tag">PostgreSQL</span><span class="tag">React</span><span class="tag">Render</span><span class="tag">Vercel</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3 class="project-title">Research Gap Finder Agent</h3>
+      </div>
+      <p class="project-sub">AI Research Paper Discovery &amp; Gap Analysis</p>
+      <ul class="bullets">
+        <li>Built an NLP pipeline to ingest, parse and analyse large corpora of academic papers, extracting methodologies and surfacing research gaps.</li>
+        <li>Implemented semantic similarity and embedding-based cross-comparison, focusing on algorithmic optimisation and reliable model evaluation.</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">NLP</span><span class="tag">Semantic Similarity</span><span class="tag">Embeddings</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="section-num">03 — Toolkit</span>
+        <h2 class="section-title">Skills</h2>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <h3>AI / ML</h3>
+      <div class="skill-chips">
+        <span class="chip">ML Fundamentals</span>
+        <span class="chip">NLP &amp; Semantic Similarity</span>
+        <span class="chip">Embeddings</span>
+        <span class="chip">Model Evaluation</span>
+        <span class="chip">Data Prep for ML Pipelines</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <h3>Languages &amp; Core CS</h3>
+      <div class="skill-chips">
+        <span class="chip">Python</span>
+        <span class="chip">Java</span>
+        <span class="chip">Data Structures &amp; Algorithms</span>
+        <span class="chip">OOP</span>
+        <span class="chip">Operating Systems</span>
+        <span class="chip">Computer Networks</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <h3>Backend &amp; Data</h3>
+      <div class="skill-chips">
+        <span class="chip">FastAPI</span>
+        <span class="chip">REST API Design</span>
+        <span class="chip">PostgreSQL</span>
+        <span class="chip">SQL &amp; Schema Design</span>
+        <span class="chip">Redis</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <h3>Frontend &amp; Platforms</h3>
+      <div class="skill-chips">
+        <span class="chip">React</span>
+        <span class="chip">JavaScript</span>
+        <span class="chip">HTML5 / CSS3</span>
+        <span class="chip">Git</span>
+        <span class="chip">Render</span>
+        <span class="chip">Vercel</span>
+        <span class="chip">Firebase</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="section-num">04 — Background</span>
+        <h2 class="section-title">Experience &amp; education</h2>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <span class="exp-date">2024 — Present</span>
+      <div>
+        <p class="exp-role">Student Project Developer</p>
+        <p class="exp-org">VITS Hyderabad</p>
+        <p class="exp-desc">Designed, developed and presented multiple software and AI-driven projects; collaborated cross-functionally on requirements, architecture and implementation.</p>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <span class="exp-date">2024 — 2025</span>
+      <div>
+        <p class="exp-role">Academic Project Team Coordinator</p>
+        <p class="exp-org">IARE Hyderabad</p>
+        <p class="exp-desc">Led task allocation and sprint-style progress tracking for multi-member project teams, ensuring on-time milestone delivery.</p>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <span class="exp-date">2023 — 2027</span>
+      <div>
+        <p class="exp-role">B.Tech — AI &amp; Machine Learning</p>
+        <p class="exp-org">Vignan Institute of Technology and Science, Hyderabad · CGPA 8.57</p>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <span class="exp-date">2022 — 2023</span>
+      <div>
+        <p class="exp-role">Senior Secondary (Class XII)</p>
+        <p class="exp-org">Jnanadeepa Senior Secondary School, Shimoga, Karnataka</p>
+      </div>
+    </div>
+
+    <div style="height:56px;"></div>
+
+    <div class="two-col">
+      <div>
+        <h3 style="font-family:var(--mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 4px;font-weight:500;">Certifications</h3>
+        <ul class="cert-list">
+          <li><span class="cert-name">Python Programming</span><span class="cert-org">NPTEL</span></li>
+          <li><span class="cert-name">Java Programming</span><span class="cert-org">NPTEL</span></li>
+          <li><span class="cert-name">Database Management Systems</span><span class="cert-org">TASK</span></li>
+          <li><span class="cert-name">Computer Networks &amp; Internet Protocol</span><span class="cert-org">NPTEL</span></li>
+          <li><span class="cert-name">Oracle AI Tools</span><span class="cert-org">Oracle</span></li>
+          <li><span class="cert-name">Blockchain Basics</span><span class="cert-org">—</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-family:var(--mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 18px;font-weight:500;">Languages</h3>
+        <div class="lang-row">
+          <span class="lang-chip">English</span>
+          <span class="lang-chip">Telugu</span>
+          <span class="lang-chip">Kannada</span>
+          <span class="lang-chip">Hindi</span>
+          <span class="lang-chip beginner">Spanish (Beginner)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="section-num">05 — Get in touch</span>
+        <h2 class="section-title">Contact</h2>
+      </div>
+    </div>
+    <p class="contact-copy">Open to AI/ML and full-stack engineering internships, research collaborations and interesting algorithmic problems. Reach me directly at <span class="contact-email">pvishwateja2005@gmail.com</span>, or through the links below.</p>
+    <div class="contact-links">
+      <a class="contact-link" href="https://github.com/Pvishwatejareddy" target="_blank" rel="noopener">github.com/Pvishwatejareddy <span class="arrow">↗</span></a>
+      <a class="contact-link" href="https://www.linkedin.com/in/p-vishwa-teja-36b65826a" target="_blank" rel="noopener">linkedin.com/in/p-vishwa-teja-36b65826a <span class="arrow">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 P. Vishwa Teja</span>
+    <span>Hyderabad, India</span>
+  </div>
+</footer>
+
+<script>
+  // Fallback handling for anchor links (some sandboxed preview frames swallow default anchor jumps)
+  document.querySelectorAll('a[href^="#"]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      var id = link.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    });
+  });
+</script>
+</body>
+</html>
